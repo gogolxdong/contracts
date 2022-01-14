@@ -507,11 +507,6 @@ contract TimeBondDepository is Ownable {
         uint32 lastTime; // time when last adjustment made
     }
 
-
-
-
-    /* ======== INITIALIZATION ======== */
-
     constructor ( 
         address _Time,
         address _principle,
@@ -566,17 +561,6 @@ contract TimeBondDepository is Ownable {
         emit InitTerms(terms);
     }
 
-
-
-    
-    /* ======== POLICY FUNCTIONS ======== */
-
-    enum PARAMETER { VESTING, PAYOUT, FEE, DEBT, MINPRICE }
-    /**
-     *  @notice set parameters for new bonds
-     *  @param _parameter PARAMETER
-     *  @param _input uint
-     */
     function setBondTerms ( PARAMETER _parameter, uint _input ) external onlyOwner() {
         if ( _parameter == PARAMETER.VESTING ) { // 0
             require( _input >= 129600, "Vesting must be longer than 36 hours" );
@@ -595,13 +579,6 @@ contract TimeBondDepository is Ownable {
         emit LogSetTerms(_parameter, _input);
     }
 
-    /**
-     *  @notice set control variable adjustment
-     *  @param _addition bool
-     *  @param _increment uint
-     *  @param _target uint
-     *  @param _buffer uint
-     */
     function setAdjustment ( 
         bool _addition,
         uint _increment, 

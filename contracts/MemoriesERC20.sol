@@ -899,7 +899,7 @@ contract MEMOries is ERC20Permit, Ownable {
         emit Transfer( address(0x0), stakingContract, _totalSupply );
         emit LogStakingContractUpdated( stakingContract_ );
         
-        initializer = address(0);
+        // initializer = address(0);
         return true;
     }
 
